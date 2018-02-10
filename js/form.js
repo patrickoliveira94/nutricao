@@ -30,6 +30,7 @@ function obtemPacienteForm(form) {
   return paciente;
 }
 
+// Monta <tr>
 function montaTr(paciente) {
   var pacienteTr = document.createElement("tr");
   pacienteTr.classList.add("paciente");
@@ -43,6 +44,7 @@ function montaTr(paciente) {
   return pacienteTr;
 }
 
+// Monta <td>
 function montaTd(dado, classe) {
   var td = document.createElement("td");
   td.textContent = dado;
