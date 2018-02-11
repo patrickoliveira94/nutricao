@@ -9,14 +9,36 @@ btnAddPaciente.addEventListener("click", function(ev){
 
   var pacienteTr = montaTr(paciente);
 
+  var erros = validaPaciente(paciente);
+
+  if (erros.length > 0){
+    exibeMensagensErro(erros);    
+    return;
+  }
+
   var tabela = document.querySelector("#tabela-pacientes");
 
   tabela.appendChild(pacienteTr);
 
   form.reset();
-
+  mensagensErro = document.querySelector("#mensagens-erro");
+  mensagensErro.innerHTML = "";
 });
 
+// Mostra mensagens de erro
+function exibeMensagensErro(erros){
+  var ul = document.querySelector("#mensagens-erro");
+
+  ul.innerHTML = "";
+
+  erros.forEach(function(erro){
+    var li = document.createElement("li");
+    li.textContent = erro;
+    ul.appendChild(li);
+  });
+}
+
+// Recebe o paciente inserido no formulário
 function obtemPacienteForm(form) {
 
   var paciente = {
@@ -28,6 +50,22 @@ function obtemPacienteForm(form) {
   }
 
   return paciente;
+}
+
+// Validação de Paciente
+function validaPaciente(paciente){
+
+  var erros = [];
+
+  if (paciente.nome.length == 0) erros.push("Informe um nome!");
+  
+  if (!validaPeso(paciente.peso)) erros.push("O peso é inválido!");
+  
+  if (!validaAltura(paciente.altura)) erros.push("A altura é inválida!");
+
+  if (paciente.gordura.length == 0) erros.push("Informe a gordura!");
+
+  return erros;
 }
 
 // Monta <tr>
