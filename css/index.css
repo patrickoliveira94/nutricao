@@ -121,6 +121,16 @@ button[disabled=disabled], button:disabled {
 
 }
 
+.bto-voltar {
+	color: #0c8cd3;
+	background-color: #eee;
+}
+
+.bto-voltar:active {
+	color: white;
+	background-color: #aaa;
+}
+
 .btn-add-paciente {
 	float: right;
 }
@@ -148,7 +158,7 @@ button[disabled=disabled], button:disabled {
 }
 
 #filtrar-tabela {
-	width: 200px;
+	width: 350px;
 	height: 35px;
 	margin-bottom: 10px;
 }
@@ -180,31 +190,27 @@ tr.paciente{
 }
 
 .imc-abaixo {
-	background-color: gold;
+	color: gold;
 }
 
 .imc-normal {
-	background-color: green;
-	color: white;
+	color: green;
 }
 
 .imc-sobrepeso {
-	background-color: orange;	
+	color: orange;	
 }
 
 .imc-obeso1 {
-	background-color: orangered;
-	color: white;
+	color: orangered;
 }
 
 .imc-obeso2 {
-	background-color: red;
-	color: white;
+	color: red;
 }
 
 .imc-obeso3 {
-	background-color: maroon;
-	color: white;
+	color: maroon;
 }
 
 .botoesAddPaciente {
