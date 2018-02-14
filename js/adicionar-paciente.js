@@ -15,6 +15,7 @@ btnAddPaciente.addEventListener("click", function(ev){
   }
 
   addPacienteTabela(paciente);
+  ExibirSecPacientes();
 
   form.reset();
   mensagensErro = document.querySelector("#mensagens-erro");
