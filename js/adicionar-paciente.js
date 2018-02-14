@@ -21,26 +21,6 @@ btnAddPaciente.addEventListener("click", function(ev){
   mensagensErro.innerHTML = "";
 });
 
-// Adiciona paciente na tabela
-function addPacienteTabela(paciente){
-  var pacienteTr = montaTr(paciente);
-  var tabela = document.querySelector("#tabela-pacientes");
-  tabela.appendChild(pacienteTr);
-}
-
-// Mostra mensagens de erro
-function exibeMensagensErro(erros){
-  var ul = document.querySelector("#mensagens-erro");
-
-  ul.innerHTML = "";
-
-  erros.forEach(function(erro){
-    var li = document.createElement("li");
-    li.textContent = erro;
-    ul.appendChild(li);
-  });
-}
-
 // Recebe o paciente inserido no formulário
 function obtemPacienteForm(form) {
 
@@ -71,6 +51,26 @@ function validaPaciente(paciente){
   return erros;
 }
 
+// Mostra mensagens de erro
+function exibeMensagensErro(erros){
+  var ul = document.querySelector("#mensagens-erro");
+
+  ul.innerHTML = "";
+
+  erros.forEach(function(erro){
+    var li = document.createElement("li");
+    li.textContent = erro;
+    ul.appendChild(li);
+  });
+}
+
+// Adiciona paciente na tabela
+function addPacienteTabela(paciente){
+  var pacienteTr = montaTr(paciente);
+  var tabela = document.querySelector("#tabela-pacientes");
+  tabela.appendChild(pacienteTr);
+}
+
 // Monta <tr>
 function montaTr(paciente) {
   var pacienteTr = document.createElement("tr");
@@ -79,8 +79,9 @@ function montaTr(paciente) {
   pacienteTr.appendChild(montaTd(paciente.nome, "info-nome"));
   pacienteTr.appendChild(montaTd(paciente.peso, "info-peso"));
   pacienteTr.appendChild(montaTd(paciente.altura, "info-altura"));
-  pacienteTr.appendChild(montaTd(paciente.gordura, "info-gordura"));
-  pacienteTr.appendChild(montaTd(paciente.imc, "info-imc"));
+  pacienteTr.appendChild(montaTd(paciente.gordura, "info-gordura"));  
+  var classe = tabelaImc(paciente.imc);
+  pacienteTr.appendChild(montaTd(paciente.imc, classe));
 
   return pacienteTr;
 }

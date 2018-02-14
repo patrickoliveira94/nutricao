@@ -26,6 +26,8 @@ for (var i = 0; i < pacientes.length; i++){
   if (flag_peso && flag_altura){
     var calc_imc = calculaImc(peso, altura);
     imc.textContent = calc_imc;
+    var classe = tabelaImc(calc_imc);
+    imc.classList.add(classe);
   }
   else {
     if (flag_peso == false && flag_altura == false){
@@ -57,4 +59,31 @@ function calculaImc(peso, altura) {
   imc = peso / (altura * altura);
 
   return imc.toFixed(2);
+}
+
+function tabelaImc (imc) {
+  var classe;
+
+  switch (true) {
+    case imc <= 18.4:
+      classe = "imc-abaixo";
+      break;
+    case imc >= 18.5 && imc <= 24.9:
+      classe = "imc-normal";
+      break;
+    case imc >= 25 && imc <= 29.9:
+      classe = "imc-sobrepeso";      
+      break;
+    case imc >= 30 && imc <= 34.9:
+      classe = "imc-obeso1";
+      break;
+    case imc >= 35 && imc <= 39.9:
+      classe = "imc-obeso2";      
+      break;
+    case imc >= 40:
+      classe = "imc-obeso3";      
+      break;
+  }
+  
+  return classe;
 }
